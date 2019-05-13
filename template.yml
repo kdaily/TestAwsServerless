@@ -39,11 +39,21 @@ Resources:
           Properties:
             Path: /
             Method: get
-        PostEvent:
+  AddService:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: add.handler
+      Runtime: python3.7
+      Role:
+        Fn::GetAtt:
+        - LambdaExecutionRole
+        - Arn
+      Events:
+        AddEvent:
           Type: Api
           Properties:
-            Path: /
-            Method: post
+            Path: /add/{x}/{y}
+            Method: get
   LambdaExecutionRole:
     Description: Creating service role in IAM for AWS Lambda
     Type: AWS::IAM::Role
