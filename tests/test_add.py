@@ -6,7 +6,7 @@ class TestAddCase(unittest.TestCase):
 
     def test_response(self):
         print("testing response.")
-        event = {"x": "900", "y": "99"}
+        event = {"pathParameters": {"x": "900", "y": "99"}}
         result = add.handler(event, None)
         print(result)
         self.assertEqual(result['statusCode'], 200)

@@ -6,7 +6,7 @@ def add(x, y):
     return int(x) + int(y)
 
 def handler(event, context):
-    result = add(event['x'], event['y'])
+    result = add(event['pathParameters']['x'], event['pathParameters']['y'])
     data = {'result': result}
     return {'statusCode': 200,
             'body': json.dumps(data),
